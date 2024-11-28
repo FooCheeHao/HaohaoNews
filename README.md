@@ -8,4 +8,4 @@ Reference:
 Youtube Tutorial Link: https://youtu.be/vd0buCxrhvo
 Github Link: https://github.com/constgenius/NewsWebsite
 
-![News Website](images/NewsWebsite.png)
+![News Website](public/images/NewsWebsite.png)
