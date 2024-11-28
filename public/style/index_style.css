@@ -1,0 +1,264 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --primary-text-color: #183b56;
+    --secondary-text-color: #577592;
+    --accent-color: #FF0000;
+    --accent-color-dark: #1d69a3;
+}
+
+body {
+    font-family: "Poppins", sans-serif;
+    color: var(--primary-text-color);
+    background-color: #333333; /* 设置背景为灰黑色 */
+}
+
+p {
+    color: var(--secondary-text-color);
+    line-height: 1.4rem;
+}
+
+a {
+    text-decoration: none;
+}
+
+ul {
+    list-style: none;
+}
+
+.flex {
+    display: flex;
+    align-items: center;
+}
+
+.container {
+    max-width: 1180px;
+    margin-inline: auto;
+    overflow: hidden;
+}
+
+nav {
+    background-color: #000000; /* 设置背景颜色为黑色 */
+    box-shadow: 0 0 4px #bbd0e2;
+    position: fixed;
+    top: 0;
+    z-index: 99;
+    left: 0;
+    right: 0;
+}
+
+body {
+    font-family: "Poppins", sans-serif;
+    color: white; /* 设置字体颜色为白色 */
+}
+
+.nav-links ul {
+    gap: 16px;
+}
+
+.hover-link {
+    cursor: pointer;
+    color: white; /* 设置导航链接的字体颜色为白色 */
+}
+
+.hover-link:hover {
+    color: var(--secondary-text-color); /* 悬停时的颜色可以保持不变或设置为其他颜色 */
+}
+
+.hover-link:active {
+    color: red; /* 点击时的颜色 */
+}
+
+.nav-item.active {
+    color: var(--accent-color); /* 激活状态的颜色 */
+}
+
+
+.main-nav {
+    justify-content: space-between;
+    padding-block: 8px;
+}
+
+.company-logo img {
+    width: 120px;
+}
+
+.nav-links ul {
+    gap: 16px;
+}
+
+.hover-link {
+    cursor: pointer;
+}
+
+.hover-link:hover {
+    color: var(--secondary-text-color);
+}
+
+.hover-link:active {
+    color: red;
+}
+
+.nav-item.active {
+    color: var(--accent-color);
+}
+
+.search-bar {
+    height: 32px;
+    gap: 8px;
+}
+
+.news-input {
+    width: 200px;
+    height: 100%;
+    padding-inline: 12px;
+    border-radius: 4px;
+    border: 2px solid #bbd0e2;
+}
+
+.search-button {
+    background-color: var(--accent-color);
+    color: white;
+    padding: 8px 24px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.search-button:hover {
+    background-color: var(--accent-color-dark);
+}
+
+main {
+    padding-block: 20px;
+    margin-top: 80px;
+}
+
+.cards-container {
+    justify-content: space-between;
+    flex-wrap: wrap;
+    row-gap: 20px;
+    align-items: start;
+}
+
+.card {
+    width: 360px;
+    min-height: 400px;
+    box-shadow: 0 0 4px #d4ecff;
+    border-radius: 4px;
+    cursor: pointer;
+    background-color: #000000;
+    overflow: hidden;
+    transition: all 0.3s ease;
+}
+
+.card:hover {
+    box-shadow: 1px 1px 8px #d4ecff;
+    background-color: #552828;
+    transform: translate(-2px);
+}
+
+.card-header img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+}
+
+.card-content {
+    padding: 12px;
+}
+
+.news-source {
+    margin-block: 12px;
+}
+
+
+#categories button {
+    padding: 10px 20px;
+    margin: 5px;
+    cursor: pointer;
+    background-color: transparent; 
+    color: white; 
+    border: none; 
+    font-family: "SimSun", serif; 
+}
+
+#categories button.active {
+    background-color: transparent; 
+    color: white;
+    font-family: "SimSun", serif; 
+}
+
+.about-container {
+    width: 80%;
+    padding: 30px;
+    background-color: black;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px black;
+    margin: auto;
+    text-align: left;
+}
+
+.adscontainer{
+    width: 80%;
+    padding: 30px;
+    background-color: black;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px black;
+    margin: auto;
+    text-align: center;
+}
+
+.adscontainer2{
+    width: 80%;
+    padding: 30px;
+    background-color: black;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px black;
+    margin: auto;
+    text-align: left;
+}
+
+.adscontainer3{
+    width: 80%;
+    padding: 30px;
+    background-color: black;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px black;
+    margin: auto;
+    text-align: right;
+}
+
+.side-menu {
+    width: 200px;
+    height: 100%;
+    background-color: black;
+    position: fixed;
+    top: 0;
+    left: -200px;
+    transition: left 0.3s;
+    border-right: 1px solid grey;
+}
+.side-menu.show {
+    left: 0;
+}
+
+.menu-content {
+    padding: 10px;
+}
+
+.logout {
+    text-decoration: none;
+    margin-top: 340px;
+}
+
+a {
+    text-decoration: none;
+    color: white;
+    font-size: 20px;
+    display: block;
+}

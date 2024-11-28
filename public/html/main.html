@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HaohaoNews - Main</title>
+    <link rel="stylesheet" href="../style/main_style.css">
+    <script src="../script/script.js" defer></script>
+</head>
+<body>
+    <nav>
+        <div class="main-nav container flex">
+            <a href="#" class="company-logo">
+                <img src="../images/logo.png" alt="Image" style="width: 50px; height: 50px;">
+            </a>
+            <div class="side-menu" id="sideMenu">
+                <a href="#" class="close-button" onclick="document.getElementById('sideMenu').classList.toggle('show')">&times;</a>
+                <br>
+                <img src="../images/logo.png" alt="Image" style="width: 50px; height: 50px; margin-left: 60px;">
+                <br>
+                <h2 style="margin-left: 60px;">MENU</h2>
+                <br>
+                <a href="">Refresh</a>
+                <br>
+                <a href="about.html">About Website</a>
+                <br>
+                <a href="https://api.currentsapi.services/v1/latest-news?language=en&apiKey=o2hoEij0v7rO-eYpm-PjS--KhIlADCchkpfxkp8KFeyH8mVA">API Review</a>
+                <div class="logout">
+                    <p id="username" align="left">Username</p>
+                    <script>
+                        document.addEventListener('DOMContentLoaded', () => {
+                            const username = localStorage.getItem('username');
+                            if (username) {
+                                document.getElementById('username').innerText = `Username: ${username}`;
+                            }
+                        });
+                    </script>
+                    <a href="login.html" align="right" style="color: greenyellow;">Log Out</a>
+                </div>
+            </div>
+            <div id="categories">
+                <button onclick="onCategoryClick('politics')">Politics</button>
+                <button onclick="onCategoryClick('business')">Business</button>
+                <button onclick="onCategoryClick('sports')">Sports</button>
+                <button onclick="onCategoryClick('entertainment')">Entertainment</button>
+            </div>        
+        </div>
+    </nav>
+
+    <script>
+        document.querySelector('.company-logo img').addEventListener('click', function(event) {
+            event.preventDefault();
+            document.getElementById('sideMenu').classList.toggle('show');
+        });
+    </script>
+
+    <!--MAIN-->     
+    <main>
+        <h1 align="middle">Trending News</h1>
+        <h5 align="middle">(Clicking on any of the news tabs will take you to the external Internet link to view)</h5>
+        <br>
+        <!-- News cards will be injected here -->
+        <div class="cards-container container flex" id="cardscontainer">
+        </div>
+    </main> <!--Main Ended-->
+
+    <template id="template-news-card">
+        <div class="card">
+            <div class="card-header">
+                <img src="" alt="" id="news-img" onerror="this.onerror=null; this.src='/images/error.png'; style='width: 400px; height: 180px;'">
+            </div>
+            <div class="card-content">
+                <h3 id="news-title">Title</h3>
+                <h6 class="news-source" id="news-source">haohao 07/07/2004</h6>
+                <p class="news-desc" id="news-desc">Description</p>
+            </div>
+        </div>
+    </template>
+    <button id="floatingButton" onclick="scrollToTop()">Top</button>
+    <script>
+        function onAboutClick() {
+            // Hide the news cards container
+            document.getElementById('cardscontainer').style.display = 'none';
+            // Show the About section
+            document.getElementById('about-section').style.display = 'block';
+        }
+
+        function onNavItemClick(category) {
+            // Hide the About section
+            document.getElementById('about-section').style.display = 'none';
+            // Show the news cards container (you may want to implement the logic to fetch and show news based on the category)
+            document.getElementById('cardscontainer').style.display = 'flex'; // Assuming your cards are displayed in a flex container
+        }
+
+        function scrollToTop() {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+    </script>
+    <div align= "middle" class="footer">
+        <br>
+        <br>
+        <br>
+        <br>
+        <h5>----- Final -----</h5>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <h2>Made by HaohaoNews</h2>
+        <p>Disclaimer: This website using for education propuse only, all news and resource reference from Internet</p>
+        <br>
+        <br>
+        <p>2024@ HaohaoNews</p>
+        <br>
+        <br>
+    </div>
+</body>
+</html>

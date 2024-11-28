@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HaohaoNews - Welcome</title>
+    <link rel="stylesheet" href="style/index_style.css">
+</head>
+<body>
+    <nav>
+        <div class="main-nav container flex">
+            <a href="#" class="company-logo">
+                <img src="../images/logo.png" alt="Image" style="width: 50px; height: 50px;">
+            </a>
+            <div class="side-menu" id="sideMenu">
+                <a href="#" class="close-button" onclick="document.getElementById('sideMenu').classList.toggle('show')">&times;</a>
+                <img src="../images/logo.png" alt="Image" style="width: 50px; height: 50px; margin-left: 60px;">
+                <br>
+                <h2 style="margin-left: 60px;">MENU</h2>
+                <br>
+                <a href="">Refresh</a>
+                <br>
+                <a href="/html/about.html">About Website</a>
+                <br>
+                <a href="/html/login.html">API Review</a>
+                <div class="logout">
+                    <p align="left">Please Log In</p>
+                    <script>
+                        document.querySelector('.company-logo img').addEventListener('click', function(event) {
+                            event.preventDefault();
+                            document.getElementById('sideMenu').classList.toggle('show');
+                        });
+                    </script>
+                    <a href="/html/login.html" align="right" style="color: greenyellow;">Log In</a>
+                </div>
+            </div>
+            <div id="categories">
+                <button onclick="window.location.href='html/login.html'">Politics</button>
+                <button onclick="window.location.href='html/login.html'">Business</button>
+                <button onclick="window.location.href='html/login.html'">Sports</button>
+                <button onclick="window.location.href='html/login.html'">Entertainment</button>
+            </div>       
+        </div>
+    </nav>
+    <main>
+        <h1 align="middle">Welcome to HaohaoNews</h1>
+        <br>
+        <div class="adscontainer">
+            <h2>Discover the Latest News and Trends</h2>
+            <br>
+            <img src="./images/Newsads.jpg" alt="Image" style="width: 512px; height: 300px;">
+            <p>Stay updated with the most recent and trending news from around the world.</p> 
+            <p>Join our community to get personalized news feeds and exclusive content.</p>
+            <br>
+            <button style="border: none; background-color: red; color: white; font-size: 20px; cursor: pointer; padding: 10px 20px; font-family: 'SimSun', serif;" onclick="window.location.href='html/login.html'">Log In</button>
+        </div>
+        <br>
+        <br>
+        <div class="adscontainer2">
+            <h2>Feature:</h2>
+            <img align="right" src="./images/Newsads2.png" alt="Image" style="width: 400px; height: 200px;">
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <h3>1. You can get latest and updated news from our HaohaoNews.</h3>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+        </div>
+        <div class="adscontainer3">
+            <img align="left" src="./images/Newsads3.PNG" alt="Image" style="width: 400px; height: 200px;">
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <h3>2. Our news source is updated from Current API.</h3>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+        </div>
+    </main>
+    <div align= "middle" class="footer">
+        <br>
+        <br>
+        <br>
+        <br>
+        <h5>----- Final -----</h5>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <h2>Made by HaohaoNews</h2>
+        <p>Disclaimer: This website using for education propuse only, all news and resource reference from Internet</p>
+        <br>
+        <br>
+        <p>2024@ HaohaoNews</p>
+        <br>
+        <br>
+    </div>
+</body>
+</html>
