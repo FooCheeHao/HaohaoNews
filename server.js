@@ -20,7 +20,7 @@ app.post('/signup', (req, res) => {
     const { username, password } = req.body;
 
     // Read users.json file
-    const usersFilePath = path.join(__dirname, 'users.json');
+    const usersFilePath = path.join(__dirname, 'public', 'data', 'users.json');
     fs.readFile(usersFilePath, 'utf8', (err, data) => {
         if (err) {
             console.error('Error reading users.json:', err);
@@ -57,7 +57,7 @@ app.post('/login', (req, res) => {
     const { username, password } = req.body;
 
     // Read users.json file
-    const usersFilePath = path.join(__dirname, 'users.json');
+    const usersFilePath = path.join(__dirname, 'public', 'data', 'users.json');
     fs.readFile(usersFilePath, 'utf8', (err, data) => {
         if (err) {
             console.error('Error reading users.json:', err);
@@ -77,6 +77,32 @@ app.post('/login', (req, res) => {
         }
 
         res.status(200).json({ message: 'Login successful' });
+    });
+});
+
+app.delete('/delete-user', (req, res) => {
+    const usersFilePath = path.join(__dirname, 'public', 'data', 'users.json');
+    const email = req.query.email;
+    fs.readFile(usersFilePath, 'utf8', (err, data) => {
+        if (err) {
+            return res.status(500).json({ message: 'Failed to read user data' });
+        }
+
+        const users = JSON.parse(data);
+
+        if (!users[email]) {
+            return res.status(404).json({ message: 'User not found' });
+        }
+
+        delete users[email];
+
+        fs.writeFile(usersFilePath, JSON.stringify(users, null, 2), (err) => {
+            if (err) {
+                return res.status(500).json({ message: 'Failed to delete user' });
+            }
+
+            res.status(200).json({ message: 'User deleted successfully' });
+        });
     });
 });
 

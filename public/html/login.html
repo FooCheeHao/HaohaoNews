@@ -13,7 +13,7 @@
             <img src="../images/logo.png" alt="Image" style="width: 80px; height: 80px;">
         </a>
         <h2>Login</h2>
-        <form id="loginForm">
+        <form id="loginForm" onsubmit="return handleLogin(event)">
             <input type="text" id="username" placeholder="email" required>
             <input type="password" id="password" placeholder="password" required>
             <br>
@@ -33,7 +33,23 @@
         <p style="color: aqua;">Image by: constgenius</p>
         <a href="https://github.com/constgenius/NewsWebsite" style="color: blue;">https://github.com/constgenius/NewsWebsite<br></a>
         <br>
-        <p style="color: red;">My project source code review: Coming Soon</p>
+        <p style="color: red;">My project source code</p>
+        <a href="https://github.com/FooCheeHao/HaohaoNews" style="color:blue;">https://github.com/FooCheeHao/HaohaoNews</a>
     </div>
+
+    <!--Admin Mode-->
+    <script>
+        function handleLogin(event) {
+            event.preventDefault();
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+        
+            if (username === 'admin' && password === '114514') {
+                window.location.href = '/html/admin.html';
+            } else {
+                document.getElementById('errorMessage').innerText = 'Invalid username or password';
+            }
+        }
+    </script>
 </body>
 </html>
