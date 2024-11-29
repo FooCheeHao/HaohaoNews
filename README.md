@@ -9,3 +9,4 @@ Reference:
 - Github Link: https://github.com/constgenius/NewsWebsite
 
 ![News Website](public/images/NewsWebsite.png)
+![Demo](public/images/Newsads2.png)
