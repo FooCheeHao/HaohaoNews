@@ -106,6 +106,42 @@ app.delete('/delete-user', (req, res) => {
     });
 });
 
+//change password
+app.post('/change-password', (req, res) => {
+    const { username, oldPassword, newPassword } = req.body;
+
+    const usersFilePath = path.join(__dirname, 'public', 'data', 'users.json');
+    fs.readFile(usersFilePath, 'utf8', (err, data) => {
+        if (err) {
+            console.error('Error reading users.json:', err);
+            return res.status(500).json({ message: 'Internal server error' });
+        }
+
+        let users;
+        try {
+            users = data ? JSON.parse(data) : {};
+        } catch (parseErr) {
+            console.error('Error parsing users.json:', parseErr);
+            return res.status(500).json({ message: 'Internal server error' });
+        }
+
+        if (!users[username] || users[username].password !== oldPassword) {
+            return res.status(400).json({ message: 'Invalid username or old password' });
+        }
+
+        users[username].password = newPassword;
+
+        fs.writeFile(usersFilePath, JSON.stringify(users, null, 2), (writeErr) => {
+            if (writeErr) {
+                console.error('Error writing to users.json:', writeErr);
+                return res.status(500).json({ message: 'Internal server error' });
+            }
+
+            res.status(200).json({ message: 'Password changed successfully' });
+        });
+    });
+});
+
 app.listen(PORT, () => {
     console.log(`Server is running on http://localhost:${PORT}`);
 });
