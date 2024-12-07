@@ -1,13 +1,30 @@
 const API_KEY = "o2hoEij0v7rO-eYpm-PjS--KhIlADCchkpfxkp8KFeyH8mVA";
-const url = "https://api.currentsapi.services/v1/latest-news?language=en&apiKey=";
+const url = "https://api.currentsapi.services/v1/latest-news?apiKey=";
+let language = "en"; // Default language
 
 window.addEventListener("load", () => fetchNews());
 
-async function fetchNews(category = "") { // 添加参数 category
-    let categoryUrl = category ? `&category=${category}` : ""; // 检查是否传入类别
-    const res = await fetch(`${url}${API_KEY}${categoryUrl}`);
+async function fetchNews(category = "", lang = language) {
+    let categoryUrl = category ? `&category=${category}` : "";
+    const res = await fetch(`${url}${API_KEY}&language=${lang}${categoryUrl}`);
     const data = await res.json();
-    bindData(data.news);
+    articles = data.news; // Store fetched articles
+    bindData(articles);
+}
+
+function onSearchClick() { // Search button click event
+    const searchInput = document.getElementById("search").value.toLowerCase();
+    const filteredArticles = articles.filter(article => 
+        article.title.toLowerCase().includes(searchInput)
+        //article.description.toLowerCase().includes(searchInput)
+    );
+    bindData(filteredArticles);
+}
+
+function onLanguageChange() {
+    const languageSelector = document.getElementById("languages");
+    language = languageSelector.value;
+    fetchNews();
 }
 
 function bindData(articles) {
@@ -17,7 +34,7 @@ function bindData(articles) {
     cardsContainer.innerHTML = "";
 
     articles.forEach((article) => {
-        if (!article.image) return; // Adjusted to match the new API response structure
+        if (!article.image) return;
 
         const cardClone = newsCardTemplate.content.cloneNode(true);
         fillDataInCard(cardClone, article);
@@ -31,13 +48,13 @@ function fillDataInCard(cardClone, article) {
     const newsSource = cardClone.querySelector("#news-source");
     const newsDesc = cardClone.querySelector("#news-desc");
 
-    newsImg.src = article.image; // Adjusted to match the new API response structure
+    newsImg.src = article.image;
     newsTitle.innerHTML = `${article.title.slice(0, 60)}...`;
     newsDesc.innerHTML = `${article.description.slice(0, 150)}...`;
 
-    const date = new Date(article.published).toLocaleString("en-US", { timeZone: "Asia/Jakarta" }); // Adjusted to match the new API response structure
+    const date = new Date(article.published).toLocaleString("en-US", { timeZone: "Asia/Jakarta" });
 
-    newsSource.innerHTML = `${article.source} · ${date}`; // Adjusted to match the new API response structure
+    newsSource.innerHTML = `${article.category} | ${date}`;
 
     cardClone.firstElementChild.addEventListener("click", () => {
         window.open(article.url, "_blank");
@@ -46,28 +63,15 @@ function fillDataInCard(cardClone, article) {
 
 let curSelectedNav = null;
 function onNavItemClick(id) {
-    fetchNews(); // Removed the query parameter as the new API does not support it
+    fetchNews();
     const navItem = document.getElementById(id);
     curSelectedNav?.classList.remove("active");
     curSelectedNav = navItem;
     curSelectedNav.classList.add("active");
 }
 
-const searchButton = document.getElementById("search-button");
-const searchText = document.getElementById("search-text");
-
-// change
-function onCategoryClick(category) {
-    fetchNews(category); // 使用类别筛选新闻
-    curSelectedNav?.classList.remove("active");
-    curSelectedNav = null;
-}
-
-let curSelectedCategory = null;
 function onCategoryClick(category) {
     fetchNews(category);
-
-    // 处理类别按钮的选中状态
     if (curSelectedCategory) {
         curSelectedCategory.classList.remove("active");
     }
@@ -77,10 +81,6 @@ function onCategoryClick(category) {
     curSelectedCategory = categoryButton;
 }
 
-//searchButton.addEventListener("click", () => {
-    //const query = searchText.value;
-    //if (!query) return;
-    //fetchNews();
-    //curSelectedNav?.classList.remove("active");
-    //curSelectedNav = null;
-//});
+//const searchButton = document.getElementById("search-button");
+//const searchText = document.getElementById("search-text");
+

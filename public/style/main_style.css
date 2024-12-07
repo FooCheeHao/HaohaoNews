@@ -126,7 +126,7 @@ body {
 }
 
 .search-button:hover {
-    background-color: var(--accent-color-dark);
+    background-color: grey;
 }
 
 main {

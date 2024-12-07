@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>HaohaoNews - Main</title>
     <link rel="stylesheet" href="../style/main_style.css">
-    <script src="../script/script.js" defer></script>
+    <script src="../script/main.js" defer></script>
 </head>
 <body>
     <nav>
@@ -46,7 +46,19 @@
                 <button onclick="onCategoryClick('business')">Business</button>
                 <button onclick="onCategoryClick('sports')">Sports</button>
                 <button onclick="onCategoryClick('entertainment')">Entertainment</button>
-            </div>        
+            </div>
+            <div id="language-selector">
+                <label for="languages">Choose language news:</label>
+                <select id="languages" onchange="onLanguageChange()">
+                    <option value="en">English</option>
+                    <option value="zh">Chinese</option>
+                    <option value="hi">India</option>
+                </select>
+            </div>
+            <div id="search-bar">
+                <input type="text" id="search" placeholder="Search keyword...">
+                <button class= "search-button" onclick="onSearchClick()">Search</button>
+            </div>
         </div>
     </nav>
 
