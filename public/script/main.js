@@ -49,8 +49,8 @@ function fillDataInCard(cardClone, article) {
     const newsDesc = cardClone.querySelector("#news-desc");
 
     newsImg.src = article.image;
-    newsTitle.innerHTML = `${article.title.slice(0, 60)}...`;
-    newsDesc.innerHTML = `${article.description.slice(0, 150)}...`;
+    newsTitle.innerHTML = `${article.title.slice(0, 999)}`;
+    newsDesc.innerHTML = `${article.description.slice(0, 200)}...`;
 
     const date = new Date(article.published).toLocaleString("en-US", { timeZone: "Asia/Jakarta" });
 
