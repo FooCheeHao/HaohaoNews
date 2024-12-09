@@ -54,7 +54,7 @@ function fillDataInCard(cardClone, article) {
 
     const date = new Date(article.published).toLocaleString("en-US", { timeZone: "Asia/Jakarta" });
 
-    newsSource.innerHTML = `${article.category} | ${date}`;
+    newsSource.innerHTML = `${article.category} | ${article.author} | ${date}`;
 
     cardClone.firstElementChild.addEventListener("click", () => {
         window.open(article.url, "_blank");
