@@ -1,8 +1,20 @@
 {
-  "user@gmail.com": {
-    "password": "user12345"
+  "hao@gmail.com": {
+    "password": "$2b$10$Pg5bBS9yHJmPN5TW8YbU2eyg4u/GSwaMmS0nAGES8DnO7MfqmZDMO",
+    "feedbacks": [
+      {
+        "rating": "4",
+        "feedback": "improve for UI design"
+      }
+    ]
   },
-  "john@gmail.com": {
-    "password": "john12345"
+  "user@gmail.com": {
+    "password": "$2b$10$e9aeDu77tNMLOnGQReoR5OJ77y.LAOTDsAGYuXrg.TCagyQAAqPZq",
+    "feedbacks": [
+      {
+        "rating": "5",
+        "feedback": "good news"
+      }
+    ]
   }
 }

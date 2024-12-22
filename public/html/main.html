@@ -24,6 +24,8 @@
                 <br>
                 <a href="about.html">About Website</a>
                 <br>
+                <a href="feedback.html">Feedback</a>
+                <br>
                 <a href="https://api.currentsapi.services/v1/latest-news?language=en&apiKey=o2hoEij0v7rO-eYpm-PjS--KhIlADCchkpfxkp8KFeyH8mVA">API Review</a>
                 <br>
                 <a href="password.html">Change Password</a>
@@ -48,7 +50,7 @@
                 <button onclick="onCategoryClick('entertainment')">Entertainment</button>
             </div>
             <div id="language-selector">
-                <label for="languages">Choose language news:</label>
+                <label for="languages">Languages语:</label>
                 <select id="languages" onchange="onLanguageChange()">
                     <option value="en">English</option>
                     <option value="zh">Chinese</option>
@@ -72,7 +74,7 @@
     <!--MAIN-->     
     <main>
         <h1 align="middle">Trending News</h1>
-        <h5 align="middle">(Clicking on any of the news tabs will take you to the external Internet link to view)</h5>
+        <h5 align="middle">(Clicking any news card to read more, all news source is taken from Internet)</h5>
         <br>
         <!-- News cards will be injected here -->
         <div class="cards-container container flex" id="cardscontainer">
@@ -88,30 +90,11 @@
                 <h3 id="news-title">Title</h3>
                 <h6 class="news-source" id="news-source">haohao 07/07/2004</h6>
                 <p class="news-desc" id="news-desc">Description</p>
-                <a href="" class="read-more" style="color:blue" id="news-url" target="_blank">...Read More</a>
+                <p style="color:blue">...Read More</p>
             </div>
         </div>
     </template>
     <button id="floatingButton" onclick="scrollToTop()">Top</button>
-    <script>
-        function onAboutClick() {
-            // Hide the news cards container
-            document.getElementById('cardscontainer').style.display = 'none';
-            // Show the About section
-            document.getElementById('about-section').style.display = 'block';
-        }
-
-        function onNavItemClick(category) {
-            // Hide the About section
-            document.getElementById('about-section').style.display = 'none';
-            // Show the news cards container (you may want to implement the logic to fetch and show news based on the category)
-            document.getElementById('cardscontainer').style.display = 'flex'; // Assuming your cards are displayed in a flex container
-        }
-
-        function scrollToTop() {
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-        }
-    </script>
     <div align= "middle" class="footer">
         <br>
         <br>
@@ -133,3 +116,5 @@
     </div>
 </body>
 </html>
+
+Good idea! Let’s get started right after class

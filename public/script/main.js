@@ -1,5 +1,5 @@
-const API_KEY = "o2hoEij0v7rO-eYpm-PjS--KhIlADCchkpfxkp8KFeyH8mVA";
-const url = "https://api.currentsapi.services/v1/latest-news?apiKey=";
+const API_KEY = "o2hoEij0v7rO-eYpm-PjS--KhIlADCchkpfxkp8KFeyH8mVA"; //api key
+const url = "https://api.currentsapi.services/v1/latest-news?apiKey="; //api url
 let language = "en"; // Default language
 
 window.addEventListener("load", () => fetchNews());
@@ -50,7 +50,7 @@ function fillDataInCard(cardClone, article) {
 
     newsImg.src = article.image;
     newsTitle.innerHTML = `${article.title.slice(0, 999)}`;
-    newsDesc.innerHTML = `${article.description.slice(0, 200)}...`;
+    newsDesc.innerHTML = `${article.description.slice(0, 200)}`;
 
     const date = new Date(article.published).toLocaleString("en-US", { timeZone: "Asia/Jakarta" });
 
@@ -81,6 +81,6 @@ function onCategoryClick(category) {
     curSelectedCategory = categoryButton;
 }
 
-//const searchButton = document.getElementById("search-button");
-//const searchText = document.getElementById("search-text");
-
+function scrollToTop() {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+}

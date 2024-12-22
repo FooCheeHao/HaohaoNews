@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HaohaoNews - Feedback</title>
+    <link rel="stylesheet" href="../style/main_style.css">
+    <script src="../script/feedback.js" defer></script>
+</head>
+<body>
+    <br>
+    <!--Feedback Website-->
+    <div id="about-section" class="about-container">
+        <a align="middle" href="../html/main.html">
+            <img src="../images/logo.png" alt="Image" style="width: 80px; height: 80px;">
+        </a>
+        <h1 align="middle">Feedback</h1>
+        <p align="middle">Pls give some feedback for improve HaohaoNews, Thank!</p>
+        <br>
+        <p id="username" align="middle">Login Email: </p>
+        <br>
+        <p align="middle">Rating: </p>
+        <div class="rating" align="middle">
+            <input type="radio" name="rating" value="1" id="rating-1">
+            <label for="rating-1">1</label>
+            <input type="radio" name="rating" value="2" id="rating-2">
+            <label for="rating-2">2</label>
+            <input type="radio" name="rating" value="3" id="rating-3">
+            <label for="rating-3">3</label>
+            <input type="radio" name="rating" value="4" id="rating-4">
+            <label for="rating-4">4</label>
+            <input type="radio" name="rating" value="5" id="rating-5">
+            <label for="rating-5">5</label>
+        </div>
+        <br>
+        <form id="feedback-form" align="middle">
+            <label for="feedback">Write a feedback (optional):</label>
+            <input type="text" id="feedback" name="feedback" required style="width: 800px; height: 40px;"><br><br>
+            <button type="submit">Submit Feedback</button>
+        </form>
+    </div>
+</body>
+</html>
