@@ -66,7 +66,7 @@ router.post('/signup', (req, res) => {
 router.post('/login', (req, res) => {
     const { username, password } = req.body;
 
-    const usersFilePath = path.join(__dirname, '..', 'data', 'users.json');
+    const usersFilePath = path.join(__dirname, '..', 'public', 'data', 'users.json');
     fs.readFile(usersFilePath, 'utf8', (err, data) => {
         if (err) {
             console.error('Error reading users.json:', err);
