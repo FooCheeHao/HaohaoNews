@@ -1,5 +1,7 @@
 [build]
-  functions = "/.netlify/functions"
+  command = "npm run build"
+  publish = "public"
+  functions = "functions"
 
 [[redirects]]
   from = "/*"
