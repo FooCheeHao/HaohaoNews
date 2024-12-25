@@ -13,11 +13,11 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
 // Serve static files from the "public" directory
-app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.join(__dirname, '..', 'public')));
 
 // Handle the root path request
 router.get('/', (req, res) => {
-    res.sendFile(path.join(__dirname, 'public', 'index.html'));
+    res.sendFile(path.join(__dirname, '..', 'public', 'index.html'));
 });
 
 // User registration
@@ -29,7 +29,7 @@ router.post('/signup', (req, res) => {
             return res.status(500).json({ message: 'Failed to encrypt password' });
         }
 
-        const usersFilePath = path.join(__dirname, 'public', 'data', 'users.json');
+        const usersFilePath = path.join(__dirname, '..', 'public', 'data', 'users.json');
         fs.readFile(usersFilePath, 'utf8', (err, data) => {
             if (err) {
                 console.error('Error reading users.json:', err);
@@ -66,7 +66,7 @@ router.post('/signup', (req, res) => {
 router.post('/login', (req, res) => {
     const { username, password } = req.body;
 
-    const usersFilePath = path.join(__dirname, 'public', 'data', 'users.json');
+    const usersFilePath = path.join(__dirname, '..', 'public', 'data', 'users.json');
     fs.readFile(usersFilePath, 'utf8', (err, data) => {
         if (err) {
             console.error('Error reading users.json:', err);
@@ -103,7 +103,7 @@ router.post('/login', (req, res) => {
 
 // Admin delete user
 router.delete('/delete-user', (req, res) => {
-    const usersFilePath = path.join(__dirname, 'public', 'data', 'users.json');
+    const usersFilePath = path.join(__dirname, '..', 'public', 'data', 'users.json');
     const email = req.query.email;
     fs.readFile(usersFilePath, 'utf8', (err, data) => {
         if (err) {
@@ -131,7 +131,7 @@ router.delete('/delete-user', (req, res) => {
 // Admin delete user feedback
 router.delete('/delete-feedback', (req, res) => {
     const { email, feedbackIndex } = req.query;
-    const usersFilePath = path.join(__dirname, 'public', 'data', 'users.json');
+    const usersFilePath = path.join(__dirname, '..', 'public', 'data', 'users.json');
     
     fs.readFile(usersFilePath, 'utf8', (err, data) => {
         if (err) {
@@ -164,7 +164,7 @@ router.delete('/delete-feedback', (req, res) => {
 router.post('/change-password', (req, res) => {
     const { username, oldPassword, newPassword } = req.body;
 
-    const usersFilePath = path.join(__dirname, 'public', 'data', 'users.json');
+    const usersFilePath = path.join(__dirname, '..', 'public', 'data', 'users.json');
     fs.readFile(usersFilePath, 'utf8', (err, data) => {
         if (err) {
             console.error('Error reading users.json:', err);
@@ -216,7 +216,7 @@ router.post('/change-password', (req, res) => {
 router.post('/submit-feedback', (req, res) => {
     const { username, rating, feedback } = req.body;
 
-    const feedbackFilePath = path.join(__dirname, 'public', 'data', 'users.json');
+    const feedbackFilePath = path.join(__dirname, '..', 'public', 'data', 'users.json');
     fs.readFile(feedbackFilePath, 'utf8', (err, data) => {
         if (err) {
             console.error('Error reading users.json:', err);
