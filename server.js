@@ -6,6 +6,7 @@ const app = express();
 const PORT = 3000;
 const bcrypt = require('bcrypt'); // Import bcrypt
 const saltRounds = 10; // Number of salt rounds
+const opn = require('opn');
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -255,11 +256,9 @@ app.post('/submit-feedback', (req, res) => {
 });
 
 // port 3000
-const open = require('open');
-
 app.listen(PORT, () => {
     console.log(`Server is running on http://localhost:${PORT}`);
     if (process.env.NODE_ENV !== 'production') {
-        open(`http://localhost:${PORT}`);
+        opn(`http://localhost:${PORT}`);
     }
 });
