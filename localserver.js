@@ -2,12 +2,11 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const fs = require('fs');
 const path = require('path');
-const bcrypt = require('bcrypt');
-const saltRounds = 10;
-const serverless = require('serverless-http');
-
 const app = express();
-const router = express.Router();
+const PORT = 3000;
+const bcrypt = require('bcrypt'); // Import bcrypt
+const saltRounds = 10; // Number of salt rounds
+const opn = require('opn');
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -16,12 +15,12 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, 'public')));
 
 // Handle the root path request
-router.get('/', (req, res) => {
+app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, 'public', 'index.html'));
 });
 
-// User registration
-router.post('/signup', (req, res) => {
+//用户注册
+app.post('/signup', (req, res) => {
     const { username, password } = req.body;
 
     bcrypt.hash(password, saltRounds, (err, hash) => {
@@ -29,43 +28,46 @@ router.post('/signup', (req, res) => {
             return res.status(500).json({ message: 'Failed to encrypt password' });
         }
 
-        const usersFilePath = path.join(__dirname, 'public', 'data', 'users.json');
-        fs.readFile(usersFilePath, 'utf8', (err, data) => {
-            if (err) {
-                console.error('Error reading users.json:', err);
+    // Read users.json file
+    const usersFilePath = path.join(__dirname, 'public', 'data', 'users.json');
+    fs.readFile(usersFilePath, 'utf8', (err, data) => {
+        if (err) {
+            console.error('Error reading users.json:', err);
+            return res.status(500).json({ message: 'Internal server error' });
+        }
+
+        let users;
+        try {
+            users = data ? JSON.parse(data) : {};
+        } catch (parseErr) {
+            console.error('Error parsing users.json:', parseErr);
+            return res.status(500).json({ message: 'Internal server error' });
+        }
+
+        if (users[username]) {
+            return res.status(400).json({ message: 'User already exists' });
+        }
+
+        users[username] = { password: hash, feedbacks: [] };
+
+        // Write updated users back to users.json
+        fs.writeFile(usersFilePath, JSON.stringify(users, null, 2), (writeErr) => {
+            if (writeErr) {
+                console.error('Error writing to users.json:', writeErr);
                 return res.status(500).json({ message: 'Internal server error' });
             }
 
-            let users;
-            try {
-                users = data ? JSON.parse(data) : {};
-            } catch (parseErr) {
-                console.error('Error parsing users.json:', parseErr);
-                return res.status(500).json({ message: 'Internal server error' });
-            }
-
-            if (users[username]) {
-                return res.status(400).json({ message: 'User already exists' });
-            }
-
-            users[username] = { password: hash, feedbacks: [] };
-
-            fs.writeFile(usersFilePath, JSON.stringify(users, null, 2), (writeErr) => {
-                if (writeErr) {
-                    console.error('Error writing to users.json:', writeErr);
-                    return res.status(500).json({ message: 'Internal server error' });
-                }
-
-                res.status(201).json({ message: 'User registered successfully' });
+            res.status(201).json({ message: 'User registered successfully' });
             });
         });
     });
 });
 
-// User login
-router.post('/login', (req, res) => {
+//用户登录
+app.post('/login', (req, res) => {
     const { username, password } = req.body;
 
+    // Read users.json file
     const usersFilePath = path.join(__dirname, 'public', 'data', 'users.json');
     fs.readFile(usersFilePath, 'utf8', (err, data) => {
         if (err) {
@@ -101,8 +103,8 @@ router.post('/login', (req, res) => {
     });
 });
 
-// Admin delete user
-router.delete('/delete-user', (req, res) => {
+//admin delete user
+app.delete('/delete-user', (req, res) => {
     const usersFilePath = path.join(__dirname, 'public', 'data', 'users.json');
     const email = req.query.email;
     fs.readFile(usersFilePath, 'utf8', (err, data) => {
@@ -128,8 +130,8 @@ router.delete('/delete-user', (req, res) => {
     });
 });
 
-// Admin delete user feedback
-router.delete('/delete-feedback', (req, res) => {
+//admin delete user feedback
+app.delete('/delete-feedback', (req, res) => {
     const { email, feedbackIndex } = req.query;
     const usersFilePath = path.join(__dirname, 'public', 'data', 'users.json');
     
@@ -160,8 +162,8 @@ router.delete('/delete-feedback', (req, res) => {
     });
 });
 
-// Change password
-router.post('/change-password', (req, res) => {
+// 更改密码
+app.post('/change-password', (req, res) => {
     const { username, oldPassword, newPassword } = req.body;
 
     const usersFilePath = path.join(__dirname, 'public', 'data', 'users.json');
@@ -212,8 +214,9 @@ router.post('/change-password', (req, res) => {
     });
 });
 
+app.use(express.json());
 // Handle feedback submission
-router.post('/submit-feedback', (req, res) => {
+app.post('/submit-feedback', (req, res) => {
     const { username, rating, feedback } = req.body;
 
     const feedbackFilePath = path.join(__dirname, 'public', 'data', 'users.json');
@@ -252,6 +255,8 @@ router.post('/submit-feedback', (req, res) => {
     });
 });
 
-app.use('/.netlify/functions/server', router);
-
-module.exports.handler = serverless(app);
+// port 3000
+app.listen(PORT, () => {
+    console.log(`Server is running on http://localhost:${PORT}, ctrl + c to stop`);
+    opn(`http://localhost:${PORT}`);
+});
