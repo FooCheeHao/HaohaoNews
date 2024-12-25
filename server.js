@@ -257,6 +257,6 @@ app.post('/submit-feedback', (req, res) => {
 
 // port 3000
 app.listen(PORT, () => {
-    console.log(`Server is running on http://localhost:${PORT}`);
+    console.log(`Server is running on http://localhost:${PORT}, ctrl + c to stop`);
     opn(`http://localhost:${PORT}`);
 });
