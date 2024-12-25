@@ -258,7 +258,5 @@ app.post('/submit-feedback', (req, res) => {
 // port 3000
 app.listen(PORT, () => {
     console.log(`Server is running on http://localhost:${PORT}`);
-    if (process.env.NODE_ENV !== 'production' && process.env.CONTEXT !== 'production') {
-        opn(`http://localhost:${PORT}`);
-    }
+    opn(`http://localhost:${PORT}`);
 });
