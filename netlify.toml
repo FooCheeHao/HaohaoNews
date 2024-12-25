@@ -2,7 +2,10 @@
   command = "npm install && npm run build"
   publish = "public"
 
+[build.environment]
+  NODE-VERSION="14.x"
+
 [[redirects]]
   from = "/*"
-  to = "/.netlify/functions/server"
+  to = "/.netlify/functions/server.js"
   status = 200
