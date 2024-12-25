@@ -257,5 +257,5 @@ app.post('/submit-feedback', (req, res) => {
     });
 });
 
-app.use('/.netlify/functions/server', router);
+app.use('/.netlify/function/server', router);
 module.exports.handler = serverless(app);
