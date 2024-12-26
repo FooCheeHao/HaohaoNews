@@ -94,7 +94,27 @@
             </div>
         </div>
     </template>
-    <button id="floatingButton" onclick="scrollToTop()">Top</button>
+
+    <!-- Modal Template -->
+    <div id="newsModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2 align="middle">News Detail</h2>
+            <img id="modal-img" src="" alt="News Image">
+            <h2 style="font-size: 50px; font-family: Times New Roman;" id="modal-title">Title</h2>
+            <br>
+            <p style="color:white;" id="modal-source">Source</p>
+            <br>
+            <h2 style="color:cadetblue;"id="modal-desc">Description</h2>
+            <br>
+            <h2 style="color:blue;">Read More: (website)</h2>
+            <a style="color:blue;" id="modal-url" >Website</a>
+        </div>
+    </div>
+
+    <!--Footer-->
+    <button id="floatingButton" style="margin-bottom: 50px;"onclick="scrollToTop()">TOP</button>
+    <button id="floatingButton" style="background-color:rgb(20, 218, 152);" onclick="location.href='feedback.html'">FEEDBACK</button>
     <div align= "middle" class="footer">
         <br>
         <br>
@@ -116,5 +136,3 @@
     </div>
 </body>
 </html>
-
-Good idea! Let’s get started right after class

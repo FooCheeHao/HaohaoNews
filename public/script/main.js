@@ -84,3 +84,55 @@ function onCategoryClick(category) {
 function scrollToTop() {
     window.scrollTo({ top: 0, behavior: 'smooth' });
 }
+
+// Get modal elements
+const modal = document.getElementById("newsModal");
+const modalTitle = document.getElementById("modal-title");
+const modalImg = document.getElementById("modal-img");
+const modalSource = document.getElementById("modal-source");
+const modalDesc = document.getElementById("modal-desc");
+const modalUrl = document.getElementById("modal-url");
+const closeModal = document.getElementsByClassName("close")[0];
+
+function fillDataInCard(cardClone, article) {
+    const newsImg = cardClone.querySelector("#news-img");
+    const newsTitle = cardClone.querySelector("#news-title");
+    const newsSource = cardClone.querySelector("#news-source");
+    const newsDesc = cardClone.querySelector("#news-desc");
+
+    newsImg.src = article.image;
+    newsTitle.innerHTML = `${article.title.slice(0, 999)}`;
+    newsDesc.innerHTML = `${article.description.slice(0, 200)}`;
+
+    const date = new Date(article.published).toLocaleString("en-US", { timeZone: "Asia/Jakarta" });
+
+    newsSource.innerHTML = `${article.category} | ${article.author} | ${date}`;
+
+    cardClone.firstElementChild.addEventListener("click", () => {
+        openModal(article);
+    });
+}
+
+function openModal(article) {
+    modal.style.display = "block";
+    modalTitle.innerHTML = article.title;
+    modalImg.src = article.image;
+    modalSource.innerHTML = `Category: ${article.category}<br>
+                            Author: ${article.author}<br>
+                            Date: ${new Date(article.published).toLocaleString("en-US", { timeZone: "Asia/Jakarta" })}`;
+    modalDesc.innerHTML = article.description;
+    modalUrl.href = article.url;
+    modalUrl.innerHTML = article.url;
+}
+
+// Close the modal
+closeModal.onclick = function() {
+    modal.style.display = "none";
+}
+
+// Close the modal when clicking outside of it
+window.onclick = function(event) {
+    if (event.target == modal) {
+        modal.style.display = "none";
+    }
+}
