@@ -11,7 +11,7 @@ This project provides practical experience in working with APIs, handling DOM ma
 Also than, I also using node.js with json database to managed user information for login and sign up. They admin can see full list for user and can delete user information.
 
 ![Demo2](public/images/admin.png)
-![Demo3](public/images/json.PNG)
+![Demo3](public/images/json2.png)
 
 Reference:
 - Youtube Tutorial Link: https://youtu.be/vd0buCxrhvo
