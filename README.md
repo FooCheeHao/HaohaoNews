@@ -9,6 +9,7 @@ This project provides practical experience in working with APIs, handling DOM ma
 ![Demo](public/images/Newsads2.png)
 
 Our news reference from currentapi in json format to fetch out lastest trending news:
+
 ![API](public/images/api.PNG)
 
 Also than, I also using node.js with json database to managed user information for login and sign up. They admin can see full list for user and can delete user information.
