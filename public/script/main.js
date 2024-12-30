@@ -50,7 +50,7 @@ function fillDataInCard(cardClone, article) {
 
     newsImg.src = article.image;
     newsTitle.innerHTML = `${article.title.slice(0, 999)}`;
-    newsDesc.innerHTML = `${article.description.slice(0, 200)}`;
+    newsDesc.innerHTML = `${article.description.slice(0, 999)}`;
 
     const date = new Date(article.published).toLocaleString("en-US", { timeZone: "Asia/Jakarta" });
 
@@ -102,7 +102,7 @@ function fillDataInCard(cardClone, article) {
 
     newsImg.src = article.image;
     newsTitle.innerHTML = `${article.title.slice(0, 999)}`;
-    newsDesc.innerHTML = `${article.description.slice(0, 200)}`;
+    newsDesc.innerHTML = `${article.description.slice(0, 100)}`;
 
     const date = new Date(article.published).toLocaleString("en-US", { timeZone: "Asia/Jakarta" });
 

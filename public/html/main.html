@@ -52,9 +52,9 @@
             <div id="language-selector">
                 <label for="languages">Languages语:</label>
                 <select id="languages" onchange="onLanguageChange()">
-                    <option value="en">English</option>
-                    <option value="zh">Chinese</option>
-                    <option value="hi">India</option>
+                    <option value="en">English (en)</option>
+                    <option value="zh">Chinese (zh)</option>
+                    <option value="hi">India (hi)</option>
                 </select>
             </div>
             <div id="search-bar">
@@ -84,13 +84,13 @@
     <template id="template-news-card">
         <div class="card">
             <div class="card-header">
-                <img src="" alt="" id="news-img" onerror="this.onerror=null; this.src='/images/error.png'; style='width: 400px; height: 180px;'">
+                <img src="" alt="" id="news-img" onerror="this.onerror=null; this.src='/images/error.png'; style='width: 280px; height:120px;'">
             </div>
             <div class="card-content">
-                <h3 id="news-title">Title</h3>
+                <h3 id="news-title" style="font-family: Times New Roman; font-size: 22px;">Title</h3>
                 <h6 class="news-source" id="news-source">haohao 07/07/2004</h6>
                 <p class="news-desc" id="news-desc">Description</p>
-                <p style="color:blue">...Read More</p>
+                <p style="color:blue;">...Read More</p>
             </div>
         </div>
     </template>
@@ -100,6 +100,7 @@
         <div class="modal-content">
             <span class="close">&times;</span>
             <h2 align="middle">News Detail</h2>
+            <br>
             <img id="modal-img" src="" alt="News Image">
             <h2 style="font-size: 50px; font-family: Times New Roman;" id="modal-title">Title</h2>
             <br>
@@ -107,8 +108,9 @@
             <br>
             <h2 style="color:cadetblue;"id="modal-desc">Description</h2>
             <br>
-            <h2 style="color:blue;">Read More: (website)</h2>
-            <a style="color:blue;" id="modal-url" >Website</a>
+            <br>
+            <h2 style="color:cadetblue;">Read More: (click website)</h2>
+            <a style="color:blue; font-size: 15px; word-wrap: break-word;" id="modal-url" >Website</a>
         </div>
     </div>
 
