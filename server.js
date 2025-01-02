@@ -23,6 +23,7 @@ app.get('/', (req, res) => {
 app.post('/signup', (req, res) => {
     const { username, password } = req.body;
 
+    // Encrypt password
     bcrypt.hash(password, saltRounds, (err, hash) => {
         if (err) {
             return res.status(500).json({ message: 'Failed to encrypt password' });
@@ -88,6 +89,7 @@ app.post('/login', (req, res) => {
             return res.status(400).json({ message: 'Invalid username or password' });
         }
 
+        // Compare bcrypt passwords
         bcrypt.compare(password, user.password, (err, result) => {
             if (err) {
                 console.error('Error comparing passwords:', err);

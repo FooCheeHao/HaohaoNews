@@ -3,18 +3,13 @@
     "password": "$2b$10$Pg5bBS9yHJmPN5TW8YbU2eyg4u/GSwaMmS0nAGES8DnO7MfqmZDMO",
     "feedbacks": [
       {
-        "rating": "4",
-        "feedback": "Need saved news, also UI website need improve"
+        "rating": "5",
+        "feedback": "user"
       }
     ]
   },
-  "user@gmail.com": {
-    "password": "$2b$10$e9aeDu77tNMLOnGQReoR5OJ77y.LAOTDsAGYuXrg.TCagyQAAqPZq",
-    "feedbacks": [
-      {
-        "rating": "5",
-        "feedback": "good news"
-      }
-    ]
+  "cai@gmail.com": {
+    "password": "$2b$10$FRPUQLFW/REkQh26dC48WOoyjB4my0JXJhqAG6ckJte0p3CuxLJRK",
+    "feedbacks": []
   }
 }
