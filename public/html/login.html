@@ -16,6 +16,18 @@
         <form id="loginForm" onsubmit="return handleLogin(event)">
             <input type="text" id="username" placeholder="email" required>
             <input type="password" id="password" placeholder="password" required>
+            <input type="checkbox" id="togglePassword">
+            <label for="togglePassword" style="color: white;">Show Password</label>
+            <script>
+                const togglePassword = document.querySelector('#togglePassword');
+                const password = document.querySelector('#password');
+              
+                togglePassword.addEventListener('change', function (e) {
+                  // toggle the type attribute
+                  const type = password.getAttribute('type') === 'password' ? 'text' : 'password';
+                  password.setAttribute('type', type);
+                });
+            </script>
             <br>
             <br>
             <a href="/html/signup.html">New user? Please click here to Sign Up</a>
@@ -47,7 +59,7 @@
             if (username === 'admin' && password === '114514') {
                 window.location.href = '/html/admin.html';
             } else {
-                document.getElementById('errorMessage').innerText = 'Invalid username or password';
+                document.getElementById('errorMessage').innerText = 'Welcome!';
             }
         }
     </script>

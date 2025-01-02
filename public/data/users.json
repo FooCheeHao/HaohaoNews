@@ -1,6 +1,6 @@
 {
   "hao@gmail.com": {
-    "password": "$2b$10$Pg5bBS9yHJmPN5TW8YbU2eyg4u/GSwaMmS0nAGES8DnO7MfqmZDMO",
+    "password": "$2b$10$.YdJjbCPQ0471csREA35TeyZ82KtoDHBNMRCaZBoFSn.omx8HIeja",
     "feedbacks": [
       {
         "rating": "5",
@@ -8,8 +8,8 @@
       }
     ]
   },
-  "cai@gmail.com": {
-    "password": "$2b$10$FRPUQLFW/REkQh26dC48WOoyjB4my0JXJhqAG6ckJte0p3CuxLJRK",
+  "user@gmail.com": {
+    "password": "$2b$10$4a8bt0K6OL0QZyqFNphh/.pNCgFi1KIygFuN/woajVBe898h.hvbO",
     "feedbacks": []
   }
 }

@@ -28,7 +28,12 @@
                 <br>
                 <a href="https://api.currentsapi.services/v1/latest-news?language=en&apiKey=o2hoEij0v7rO-eYpm-PjS--KhIlADCchkpfxkp8KFeyH8mVA">API Review</a>
                 <br>
-                <a href="password.html">Change Password</a>
+                <a href="password.html" onclick="return confirmChangePassword()">Change Password</a>
+                <script>
+                function confirmChangePassword() {
+                    return confirm("Are you sure you want to change your password?");
+                }
+                </script>
                 <br>
                 <div class="logout">
                     <p id="username" align="left">Username</p>

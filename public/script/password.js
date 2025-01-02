@@ -11,7 +11,19 @@ document.addEventListener('DOMContentLoaded', () => {
         const confirmPassword = document.getElementById('confirm-password').value;
 
         if (newPassword !== confirmPassword) {
-            alert('New passwords do not match');
+            alert('New passwords do not match'); // alert if new passwords do not match
+            return;
+        }
+
+        if (oldPassword === newPassword) {
+            alert('Old and new passwords are the same, please try again'); // alert if old and new passwords are the same
+            return;
+        }
+
+        // Password validation
+        const passwordPattern = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/;
+        if (!passwordPattern.test(newPassword)) {
+            alert('Password must contain at least 8 characters, including one letter and one number'); // alert if password does not meet requirements
             return;
         }
 
