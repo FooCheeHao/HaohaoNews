@@ -1,12 +1,7 @@
 {
   "hao@gmail.com": {
     "password": "$2b$10$.YdJjbCPQ0471csREA35TeyZ82KtoDHBNMRCaZBoFSn.omx8HIeja",
-    "feedbacks": [
-      {
-        "rating": "5",
-        "feedback": "user"
-      }
-    ]
+    "feedbacks": []
   },
   "user@gmail.com": {
     "password": "$2b$10$4a8bt0K6OL0QZyqFNphh/.pNCgFi1KIygFuN/woajVBe898h.hvbO",

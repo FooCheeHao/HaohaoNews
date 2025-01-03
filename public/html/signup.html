@@ -13,16 +13,34 @@
         <form id="signupForm">
             <input type="text" id="username" placeholder="new email">
             <input type="password" id="password" placeholder="new password">
+            <input type="checkbox" id="togglePassword">
+            <label for="togglePassword" style="color: white;">Show Password</label>
+            <br><br>
             <input type="password" id="confirmPassword" placeholder="confirm new password">
-            <br>
-            <br>
+            <input type="checkbox" id="toggleConfirmPassword">
+            <label for="toggleConfirmPassword" style="color: white;">Show Password</label>
+            <br><br>
             <a href="login.html">Already user? Please click here to Login</a>
-            <br>
-            <br>
+            <br><br>
             <input type="submit" value="SignUp">
             <div class="error-message" id="errorMessage"></div>
         </form>
     </div> 
-</body>
 
+    <script>
+        const togglePassword = document.querySelector('#togglePassword');
+        const password = document.querySelector('#password');
+        togglePassword.addEventListener('change', function (e) {
+            const type = password.getAttribute('type') === 'password' ? 'text' : 'password';
+            password.setAttribute('type', type);
+        });
+
+        const toggleConfirmPassword = document.querySelector('#toggleConfirmPassword');
+        const confirmPassword = document.querySelector('#confirmPassword');
+        toggleConfirmPassword.addEventListener('change', function (e) {
+            const type = confirmPassword.getAttribute('type') === 'password' ? 'text' : 'password';
+            confirmPassword.setAttribute('type', type);
+        });
+    </script>
+</body>
 </html>
